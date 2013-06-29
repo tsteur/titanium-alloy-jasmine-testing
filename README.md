@@ -2,7 +2,7 @@
 
 ## Description
 
-This package allows you to run Unit-Tests for Titanium Mobile and Alloy based Apps using [Jasmine](http://pivotal.github.io/jasmine/). The tests will be executed in a headless web browser ([PhantomJS](http://phantomjs.org/)).
+This package allows you to execute Unit-Tests for Titanium Mobile and Alloy based Apps using [Jasmine](http://pivotal.github.io/jasmine/). The tests will be executed in a headless web browser ([PhantomJS](http://phantomjs.org/)).
 
 ## Features
 
@@ -34,10 +34,11 @@ If you want to build your application before running the tests, you can do this 
 `titanium build -p mobileweb`
 
 If you are using Alloy you maybe have to compile your project before building your application
+
 `alloy compile -n --config platform=mobileweb`
 
 ## Issues 
-It currently requires that your MobileWeb application runs on a server. The current implementation uses this URL: `http://127.0.0.1:8020/index.html`.
+It currently requires that your MobileWeb application runs on a server. The current implementation uses this URL: `http://127.0.0.1:8020/index.html`. If you build your app using Titanium Studio this will work out of the box.
 
 
 ## 3rd-party libraries/components
