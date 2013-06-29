@@ -46,6 +46,10 @@ https://github.com/piwik/piwik-mobile-2/tree/master/specs/models
 ## Issues 
 It currently requires that your MobileWeb application runs on a server. The current implementation uses this URL: `http://127.0.0.1:8020/index.html`. If you build your app using Titanium Studio this will work out of the box.
 
+## Todo
+
+* Run tests automatically once a build for MobileWeb is done (using [Karma](http://karma-runner.github.io/))
+* Make it possible to integrate tests into Travis-CI
 
 ## 3rd-party libraries/components
 
