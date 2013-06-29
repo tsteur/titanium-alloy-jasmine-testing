@@ -15,7 +15,7 @@ This package allows you to execute Unit-Tests for Titanium Mobile and Alloy base
 * Tests won't be packaged within the app
 * You do not need an iOS Simulator or Android Emulator
 * Execute Cross-Domain requests
-* You can extend it for instance to make screenshots if any error occurs
+* You can extend it for instance to capture screen if any error occurs
 
 ## Install
 
@@ -49,7 +49,6 @@ It currently requires that your MobileWeb application runs on a server. The curr
 
 ## Todo
 
-* Run tests automatically once a build for MobileWeb is done (using [Karma](http://karma-runner.github.io/))
 * Make it possible to integrate tests into Travis-CI
 
 ## 3rd-party libraries/components
