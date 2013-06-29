@@ -15,6 +15,7 @@ This package allows you to execute Unit-Tests for Titanium Mobile and Alloy base
 * Tests won't be packaged within the app
 * You do not need an iOS Simulator or Android Emulator
 * Execute Cross-Domain requests
+* You can extend it for instance to make screenshots if any error occurs
 
 ## Install
 
