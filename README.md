@@ -9,6 +9,7 @@ This package allows you to execute Unit-Tests for Titanium Mobile and Alloy base
 * Works on Windows, Linux and MacOSX
 * Takes only seconds to execute the tests
 * Auto detection of specification files
+* Works with Alloy (possible to test Models, Controllers, ...)
 * Access to all MobileWeb Titanium APIs, you do not have to mock anything
 * Creates XML files for each test suite
 * Tests won't be packaged within the app
