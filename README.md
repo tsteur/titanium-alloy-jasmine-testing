@@ -33,13 +33,9 @@ To run the tests simply execute the following command:
 
 `./runtests.sh`
 
-If you want to build your application before running the tests, you can do this either using Titanium Studio or using Titanium CLI
+If you want to build your application before running the tests, you can do this either using Titanium Studio or using Titanium CLI:
 
 `titanium build -p mobileweb`
-
-If you are using Alloy you maybe have to compile your project before building your application
-
-`alloy compile -n --config platform=mobileweb`
 
 ## Examples
 https://github.com/piwik/piwik-mobile-2/tree/master/specs/models
