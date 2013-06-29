@@ -20,7 +20,9 @@ This package allows you to execute Unit-Tests for Titanium Mobile and Alloy base
 
 In order to get this work you need to build your application for MobileWeb. Why? Build time is faster, it is platform independent and you don't need to install an iOS/Android-SDK.
 
-You only need to install [PhantomJS](http://phantomjs.org/). That's all.
+1. Copy the `specs` folder into your Titanium project
+2. Install [PhantomJS](http://phantomjs.org/). 
+3. Done.
 
 ## Usage
 
@@ -37,6 +39,9 @@ If you want to build your application before running the tests, you can do this 
 If you are using Alloy you maybe have to compile your project before building your application
 
 `alloy compile -n --config platform=mobileweb`
+
+## Examples
+https://github.com/piwik/piwik-mobile-2/tree/master/specs/models
 
 ## Issues 
 It currently requires that your MobileWeb application runs on a server. The current implementation uses this URL: `http://127.0.0.1:8020/index.html`. If you build your app using Titanium Studio this will work out of the box.
