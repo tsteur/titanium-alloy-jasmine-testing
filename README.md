@@ -2,24 +2,28 @@
 
 ## Description
 
-This package allows you to run Unit-Tests for Titanium Mobile and Alloy based Apps using [Jasmine](http://pivotal.github.io/jasmine/). The tests will be executed in a headless web browser ([PhantomJS](http://phantomjs.org/)).
+This package allows you to execute Unit-Tests for Titanium Mobile and Alloy based Apps using [Jasmine](http://pivotal.github.io/jasmine/). The tests will be executed in a headless web browser ([PhantomJS](http://phantomjs.org/)).
 
 ## Features
 
 * Works on Windows, Linux and MacOSX
 * Takes only seconds to execute the tests
 * Auto detection of specification files
-* Access to full Titanium API, you do not have to mock anything
+* Works with Alloy (possible to test Models, Controllers, ...)
+* Access to all MobileWeb Titanium APIs, you do not have to mock anything
 * Creates XML files for each test suite
 * Tests won't be packaged within the app
 * You do not need an iOS Simulator or Android Emulator
 * Execute Cross-Domain requests
+* You can extend it for instance to capture screen if any error occurs
 
 ## Install
 
 In order to get this work you need to build your application for MobileWeb. Why? Build time is faster, it is platform independent and you don't need to install an iOS/Android-SDK.
 
-You only need to install [PhantomJS](http://phantomjs.org/). That's all.
+1. Copy the `specs` folder into your Titanium project
+2. Install [PhantomJS](http://phantomjs.org/). 
+3. Done.
 
 ## Usage
 
@@ -29,16 +33,19 @@ To run the tests simply execute the following command:
 
 `./runtests.sh`
 
-If you want to build your application before running the tests, you can do this either using Titanium Studio or using Titanium CLI
+If you want to build your application before running the tests, you can do this either using Titanium Studio or using Titanium CLI:
 
 `titanium build -p mobileweb`
 
-If you are using Alloy you maybe have to compile your project before building your application
-`alloy compile -n --config platform=mobileweb`
+## Examples
+https://github.com/piwik/piwik-mobile-2/tree/master/specs/models
 
 ## Issues 
-It currently requires that your MobileWeb application runs on a server. The current implementation uses this URL: `http://127.0.0.1:8020/index.html`.
+It currently requires that your MobileWeb application runs on a server. The current implementation uses this URL: `http://127.0.0.1:8020/index.html`. If you build your app using Titanium Studio this will work out of the box.
 
+## Todo
+
+* Make it possible to integrate tests into Travis-CI
 
 ## 3rd-party libraries/components
 
