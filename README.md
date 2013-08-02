@@ -1,7 +1,5 @@
 # Titanium Mobile Unit-Testing with Jasmine
 
-[![Build Status](https://travis-ci.org/tsteur/titanium-alloy-jasmine-testing-travis.png?branch=master)](https://travis-ci.org/tsteur/titanium-alloy-jasmine-testing-travis)
-
 ## Description
 
 This package allows you to execute Unit-Tests for Titanium Mobile and Alloy based Apps using [Jasmine](http://pivotal.github.io/jasmine/). The tests will be executed in a headless web browser ([PhantomJS](http://phantomjs.org/)).
