@@ -2,7 +2,7 @@
 
 ## Description
 
-This package allows you to execute Unit-Tests for Titanium Mobile and Alloy based Apps using [Jasmine](http://pivotal.github.io/jasmine/). The tests will be executed in a headless web browser ([PhantomJS](http://phantomjs.org/)).
+This package allows you to execute Unit-Tests for Titanium Mobile and Alloy based Apps using [Jasmine 2](http://pivotal.github.io/jasmine/). The tests will be executed in a headless web browser ([PhantomJS](http://phantomjs.org/)).
 
 ## Features
 
@@ -48,12 +48,7 @@ It currently requires that your MobileWeb application runs on a server. The curr
 
 Name: specs/jasmine/jasmine.js<br />
 Name: specs/jasmine/jasmine-html.js<br />
+Name: specs/jasmine/boot.js<br />
+Name: specs/jasmine/console.js<br />
 License: See specs/jasmine/JASMINE.MIT.LICENSE.txt<br />
 Link: https://github.com/pivotal/jasmine<br />
-
-<hr />
-
-Name: specs/jasmine/jasmine-reporters/jasmine.phantomjs-reporter.js<br />
-Name: specs/utils/core.js<br />
-Licensing: Public Domain<br />
-Link: https://github.com/detro/phantomjs-jasminexml-example<br />
