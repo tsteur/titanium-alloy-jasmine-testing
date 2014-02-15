@@ -9,17 +9,11 @@ var page = require('webpage').create();
 var fs = require('fs');
 var resultDir = 'specs/result';
 
-page.onConsoleMessage = function(msg) {
+page.onConsoleMessage = function(message) {
 
-    if (msg && 0 !== msg.indexOf('JASMINE:')) {
-        return;
+    if (message && 0 === (''+message).indexOf('jasmine')) {
+        console.log(message.substr('jasmine'.length));
     }
-
-    if (msg && 0 === msg.indexOf('JASMINE:  >> Jasmine waiting for')) {
-        return;
-    }
-
-    console.log(msg);
 };
 
 page.onError = function(msg, trace) {
@@ -50,7 +44,8 @@ function injectJasmine(page)
 {
     page.injectJs('specs/jasmine/jasmine.js');
     page.injectJs('specs/jasmine/jasmine-html.js');
-    page.injectJs('specs/jasmine/jasmine-reporters/jasmine.phantomjs-reporter.js');
+    page.injectJs('specs/jasmine/console.js');
+    page.injectJs('specs/jasmine/boot.js');
 }
 
 function loadTests(page)
@@ -67,7 +62,17 @@ function loadTests(page)
 function runTests(page)
 {
     page.evaluate(function () {
-        jasmine.getEnv().addReporter(new jasmine.PhantomJSReporter());
+
+        var ConsoleReporter = jasmineRequire.ConsoleReporter();
+        var options = {
+            timer: new jasmine.Timer,
+            print: function (message) {
+                console.log.apply(console, ['jasmine' + message])
+            }
+        };
+        var consoleReporter = new ConsoleReporter(options);
+        jasmine.getEnv().addReporter(consoleReporter);
+
         jasmine.getEnv().execute();
     });
 }
@@ -78,45 +83,30 @@ function generateTestResultsOnceFinished(page)
     utils.core.waitfor(function() {
         // wait for this to be true
         return page.evaluate(function() {
-            return typeof(jasmine.phantomjsXMLReporterPassed) !== "undefined";
+            return jsApiReporter.finished;
         });
     }, function() {
         // once done...
-        var suitesResults = page.evaluate(function(){
-            return jasmine.phantomjsXMLReporterResults;
+        var specs = page.evaluate(function(){
+            return jsApiReporter.specs()
         });
 
-        if (!suitesResults) {
-            console.log('no tests registered or executed');
-        } else {
-            for (var index = 0; index < suitesResults.length; ++index ) {
-                saveResultOfTestInFile(suitesResults[index]);
+        var passed = true;
+        for (var index in specs) {
+            if (0 !== specs[index].failedExpectations.length) {
+                passed = false;
             }
         }
 
         // Return the correct exit status. '0' only if all the tests passed
-        phantom.exit(page.evaluate(function(){
-            return jasmine.phantomjsXMLReporterPassed ? 0 : 1; //< exit(0) is success, exit(1) is failure
-        }));
+        phantom.exit(passed ? 0 : 1);
     }, function() {
         // or, once it timesout...
         phantom.exit(1);
     });
 }
 
-function saveResultOfTestInFile(suiteResult)
-{
-    try {
-        var file = fs.open(resultDir + '/' + suiteResult['xmlfilename'], "w");
-        file.write(suiteResult['xmlbody']);
-        file.close();
-    } catch (e) {
-        console.log(e);
-        console.log("phantomjs> Unable to save result of Suite '"+ suiteResult['xmlfilename'] +"'");
-    }
-}
-
-page.open('http://127.0.0.1:8020/index.html', function (status) {
+page.open('http://127.0.0.1:8061/index.html', function (status) {
     if ('success' !== status) {
         console.error('Failed to load page');
         phantom.exit(1);
